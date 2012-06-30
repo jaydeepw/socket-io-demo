@@ -11,7 +11,7 @@ var app = require('http').createServer(handler)
   , io = require('socket.io').listen(app)
   , fs = require('fs')
 
-app.listen(80);
+app.listen(8888);
 
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
@@ -27,7 +27,9 @@ function handler (req, res) {
 }
 
 io.sockets.on('connection', function (socket) {
+
   socket.emit('news', { hello: 'world' });
+  socket.emit('news', { hello2: 'Second object.' });
   socket.on('my other event', function (data) {
     console.log(data);
   });
