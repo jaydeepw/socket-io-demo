@@ -7,11 +7,23 @@
             console.log(data);
             socket.emit('my other event', { my: 'data' });
           });
+
+          function sendData(){
+			socket.emit('jays_data', { my: 'jays data' });
+			socket.on('call_count', function (data) {
+	            //console.log(data);
+	            console.log('call count: ' + data.call_count);
+	            console.log('Socket ID: ' + data.id);
+	        });
+          }
+
         </script>
 </head>
 <body>
 
     Hello World.
+
+    <input type="button" name="button" value="Send" onclick="sendData();"/>
 
 </body>
 </html>
