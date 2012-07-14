@@ -1,17 +1,9 @@
-//var io = require('socket.io').listen(80);
-//
-//io.sockets.on('connection', function (socket) {
-//  socket.emit('news', { hello: 'world' });
-//  socket.on('my other event', function (data) {
-//    console.log(data);
-//  });
-//});
-
+var PORT_NO = 8888;
 var app = require('http').createServer(handler)
   , io = require('socket.io').listen(app)
   , fs = require('fs')
 
-app.listen(8888);
+app.listen(PORT_NO);
 
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
@@ -35,4 +27,4 @@ io.sockets.on('connection', function (socket) {
   });
 });
 
-console.log('Socket server Running now');
+console.log('Socket server running on port: ' + PORT_NO);
